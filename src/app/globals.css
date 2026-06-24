@@ -1,49 +1,39 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+  /* Isso cria automaticamente as classes bg-background, text-accent, border-borderUI, etc. */
+  --color-background: var(--bg-principal);
+  --color-foreground: var(--texto-principal);
+  --color-accent: var(--marca-accent);
+  --color-sandbox: var(--verde-sandbox);
+  --color-borderUI: var(--borda-sutil);
+
+  /* Isso cria as classes font-poppins, font-inter, font-fira */
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-fira: var(--font-fira-code), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Tema Claro */
+    --bg-principal: #FFFBF7;
+    --texto-principal: #231F20;
+    --marca-accent: #FF5411;
+    --verde-sandbox: #00E699;
+    --borda-sutil: #E5E0DA;
   }
-}
 
-html {
-  height: 100%;
-}
+  .dark {
+    /* Tema Escuro */
+    --bg-principal: #161414;
+    --texto-principal: #F5EFEB;
+    --borda-sutil: #2A2626;
+  }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
